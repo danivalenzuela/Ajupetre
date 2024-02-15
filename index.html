@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Persona</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <h2>Registro de Persona</h2>
+    <form action="procesar_registro.php" method="POST">
+        <label for="nombre_apellido">Nombre y Apellido:</label><br>
+        <input type="text" id="nombre_apellido" name="nombre_apellido" required><br>
+
+        <label for="dni">DNI:</label><br>
+        <input type="text" id="dni" name="dni" required><br>
+
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label><br>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required><br>
+
+        <label for="direccion">Dirección:</label><br>
+        <input type="text" id="direccion" name="direccion" required><br>
+
+        <label for="telefono">Teléfono:</label><br>
+        <input type="text" id="telefono" name="telefono" required><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="fecha_afiliacion">Fecha de Afiliación:</label><br>
+        <input type="date" id="fecha_afiliacion" name="fecha_afiliacion" required><br>
+
+        <input type="submit" value="Registrar">
+    </form>
+    <br>
+    <a href="http://localhost/sist/consultar_usuario.php"target=_self">
+        ¡Consulta pago pendientes por Afiliado!</a> 
+
+    
+</body>
+</html>
