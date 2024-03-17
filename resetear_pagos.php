@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['resetear_todos'])) {
             $id_persona = $row['id'];
 
             // Eliminar los pagos realizados y los pagos pendientes asociados a la persona para el año actual
-            $sql_delete_pagos_realizados = "DELETE FROM pagos_realizados WHERE persona_id = $id_persona AND YEAR(fecha_pago) = $ano_actual";
+            $sql_delete_pagos_realizados = "DELETE FROM pagos_realizados WHERE persona_id = $id_persona";
             $sql_delete_pagos_pendientes = "DELETE FROM pagos_pendientes WHERE persona_id = $id_persona";
 
             if ($conexion->query($sql_delete_pagos_realizados) === FALSE || $conexion->query($sql_delete_pagos_pendientes) === FALSE) {

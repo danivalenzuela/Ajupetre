@@ -50,8 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Registro exitoso, ahora generamos el carnet en PDF
             generarCarnetPDF($nombre_apellido, $dni, $numero_afiliado, $foto);
 
-            // Redireccionar a la página de generación de carnet con el DNI
-            header("Location: generar_carnet.php?dni=$dni");
+            // Redireccionar al formulario de registro
+            header("Location: http://localhost/sist/registro.html");
             exit();
         } else {
             echo "<div class='alert alert-danger' role='alert'>";
@@ -80,12 +80,89 @@ function obtenerNumeroAfiliado($conexion) {
 }
 
 function generarCarnetPDF($nombre_apellido, $dni, $numero_afiliado, $foto) {
-    // El código de generación de carnet permanece igual
-    // ...
+    // Crear instancia de FPDF
+    $pdf = new FPDF('P', 'mm', 'A4');
+    $pdf->AddPage();
+
+    // Establecer color de fondo con Bootstrap
+    $pdf->SetFillColor(0, 123, 255); // Azul Bootstrap
+
+    // Establecer tamaño y bordes
+    $pdf->Rect(10, 10, 90, 120, 'F'); // Rectángulo para la foto
+
+    // Agregar texto con Bootstrap
+    $pdf->SetFont('Arial', 'B', 14);
+    $pdf->SetTextColor(255, 255, 255); // Texto blanco
+    $pdf->SetXY(15, 15);
+    $pdf->Cell(80, 10, 'A.Ju.Pe.Tre', 0, 1, 'C');
+
+    // Alineación vertical para los datos
+    $pdf->SetXY(15, 35);
+    $pdf->Cell(80, 10, 'Nombre: ' . $nombre_apellido, 0, 1, 'L');
+
+    $pdf->SetXY(15, 50);
+    $pdf->Cell(80, 10, 'DNI: ' . $dni, 0, 1, 'L');
+
+    // Agregar número de afiliado
+    $pdf->SetXY(15, 65);
+    $pdf->Cell(80, 10, 'Nro. Afiliado: ' . $numero_afiliado, 0, 1, 'L');
+
+    // Alineación vertical para la foto
+    if (file_exists($foto)) {
+        // Obtener dimensiones de la foto
+        list($ancho, $alto) = getimagesize($foto);
+
+        // Calcular posición centrada
+        $x = 15 + (80 - $ancho / 4) / 2;
+        $y = 80;
+
+        // Ajustar escala a 1/4 (para que entre en el rectángulo)
+        $ancho /= 4;
+        $alto /= 4;
+
+        $pdf->Image($foto, $x, $y, $ancho, $alto); // Ajustado al rectángulo azul
+    } else {
+        $pdf->SetXY(15, 80);
+        $pdf->Cell(80, 10, 'No Foto', 1, 1, 'C');
+    }
+
+    // Guardar el PDF
+    $pdf->Output('Carnet_' . $dni . '.pdf', 'F'); // 'F' para guardar en un archivo
+
+    // Descargar el PDF
+    header("Content-disposition: attachment; filename=Carnet_$dni.pdf");
+    header("Content-type: application/pdf");
+    readfile('Carnet_' . $dni . '.pdf');
+    exit();
 }
 
 // Función para ajustar el tamaño de la imagen utilizando la librería GD
 function ajustarTamanoImagen($imagen, $nuevoAncho, $nuevoAlto) {
-    // ...
+    list($ancho, $alto) = getimagesize($imagen);
+    $proporcion = $ancho / $alto;
+
+    if ($nuevoAncho / $nuevoAlto > $proporcion) {
+        $nuevoAncho = $nuevoAlto * $proporcion;
+    } else {
+        $nuevoAlto = $nuevoAncho / $proporcion;
+    }
+
+    $imagenOriginal = imagecreatefromjpeg($imagen);
+    $imagenRedimensionada = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+    imagecopyresampled(
+        $imagenRedimensionada,
+        $imagenOriginal,
+        0,
+        0,
+        0,
+        0,
+        $nuevoAncho,
+        $nuevoAlto,
+        $ancho,
+        $alto
+    );
+
+    imagejpeg($imagenRedimensionada, $imagen);
 }
 ?>

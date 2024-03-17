@@ -3,28 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Consulta de Usuario y Pagos Pendientes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-<a href="http://localhost/sist/index.html" target="_self">
+<body class="container mt-4">
+    <a href="http://localhost/sist/index.html" target="_self">
         Volver a pantalla principal
     </a> 
     <br>
-    <h2>Consulta de Usuario y Pagos Pendientes</h2>
+    <h2 class="mt-4">Consulta de Usuario y Pagos Pendientes</h2>
     <form action="consultar_usuario.php" method="POST">
-        <label for="id_persona">ID de la Persona:</label><br>
-        <input type="text" id="id_persona" name="id_persona"><br>
-        <input type="submit" value="Consultar por ID">
+        <div class="form-group">
+            <label for="id_persona">ID de la Persona:</label>
+            <input type="text" class="form-control" id="id_persona" name="id_persona">
+        </div>
+        <button type="submit" class="btn btn-primary">Consultar por ID</button>
     </form>
     <form action="consultar_usuario.php" method="POST">
-        <label for="nombre_apellido">Nombre y apellido de afiliado:</label><br>
-        <input type="text" id="nombre_apellido" name="nombre_apellido"><br>
-        <input type="submit" value="Consultar por Nombre y Apellido">
+        <div class="form-group">
+            <label for="nombre_apellido">Nombre y apellido de afiliado:</label>
+            <input type="text" class="form-control" id="nombre_apellido" name="nombre_apellido">
+        </div>
+        <button type="submit" class="btn btn-primary">Consultar por Nombre y Apellido</button>
     </form>
     <form action="consultar_usuario.php" method="POST">
-        <label for="dni">DNI de la Persona:</label><br>
-        <input type="text" id="dni" name="dni"><br>
-        <input type="submit" value="Consultar por DNI">
+        <div class="form-group">
+            <label for="dni">DNI de la Persona:</label>
+            <input type="text" class="form-control" id="dni" name="dni">
+        </div>
+        <button type="submit" class="btn btn-primary">Consultar por DNI</button>
     </form>
 
     <?php
@@ -78,9 +85,9 @@
 
         if ($resultado_persona->num_rows > 0) {
             $row_persona = $resultado_persona->fetch_assoc();
-            echo "<h3>Información de la Persona:</h3>";
-            echo "Nombre y Apellido: " . $row_persona['nombre_apellido'] . "<br>";
-            echo "DNI: " . $row_persona['dni'] . "<br>";
+            echo "<h3 class='mt-4'>Información de la Persona:</h3>";
+            echo "<p>Nombre y Apellido: " . $row_persona['nombre_apellido'] . "</p>";
+            echo "<p>DNI: " . $row_persona['dni'] . "</p>";
             // Mostrar otros campos de información aquí...
 
             // Mostrar los 12 meses pendientes de pago con checkboxes
@@ -89,10 +96,13 @@
             $meses_abonados = obtener_meses_abonados($conexion, $row_persona['id']);
             $meses_pendientes = array_diff(["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"], $meses_abonados);
             foreach ($meses_pendientes as $mes) {
-                echo "<input type='checkbox' name='meses[]' value='$mes'>$mes<br>";
+                echo "<div class='form-check'>";
+                echo "<input class='form-check-input' type='checkbox' name='meses[]' value='$mes' id='$mes'>";
+                echo "<label class='form-check-label' for='$mes'>$mes</label>";
+                echo "</div>";
             }
             echo "<input type='hidden' name='id_persona' value='{$row_persona['id']}'>";
-            echo "<input type='submit' value='Actualizar Pagos'>";
+            echo "<button type='submit' class='btn btn-success mt-2'>Actualizar Pagos</button>";
             echo "</form>";
         } else {
             echo "<p>No se encontró ninguna persona con el criterio de búsqueda proporcionado.</p>";
@@ -101,5 +111,9 @@
         $conexion->close();
     }
     ?>
+
+    <script src='https://code.jquery.com/jquery-3.2.1.slim.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
 </body>
 </html>
