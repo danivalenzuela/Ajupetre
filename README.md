@@ -20,6 +20,8 @@ Sistema de registro de afiliados de Centro de Jubilados/Pensionados.
   -  <img width="400" alt="image" src="https://github.com/danivalenzuela/Ajupetre/assets/139027124/b48a5a75-f7ab-4d8e-9ead-5083c755c9c8">
 
 -Modulo de actualizacion de mensualidades x cada mes.
+
+
 <img width="332" alt="image" src="https://github.com/danivalenzuela/Ajupetre/assets/139027124/c337c6c4-1000-4709-a9fd-dd930eafc4cd">
 
 -Reporte de total cobrado  e individual por cada cliente registrado, como tambien meses pendiente por afiliado
