@@ -1,0 +1,114 @@
+header {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: rgb(8, 8, 10);
+}
+body {
+    background-color: rgb(96, 96, 223);
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.container h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.container h3 a {
+    color: white;
+    text-decoration: none;
+}
+
+.container h2 a:hover {
+    text-decoration: underline;
+}
+
+.input-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    font-weight: bold;
+    grid-column: span 1;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    grid-column: span 1;
+}
+
+.input-group input[type="submit"] {
+    background-color: #0074D9; /* Azul marino claro */
+    color: white;
+    cursor: pointer;
+    width: auto;
+}
+
+.input-group input[type="submit"]:hover {
+    background-color: #0056b3; /* Azul marino más oscuro */
+}
+
+.consulta-container {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.consulta-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0074D9; /* Azul marino claro */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.consulta-link:hover {
+    background-color: #0056b3; /* Azul marino más oscuro */
+}
+
+.carnet {
+    width: 80%;
+    max-width: 400px; /* Ajusta el ancho máximo según sea necesario */
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #ffc107; /* Borde amarillo cálido */
+    border-radius: 10px;
+    background-color: #ffecb3; /* Fondo amarillo cálido */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.carnet h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333; /* Color de texto oscuro */
+}
+
+.carnet p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #555; /* Color de texto un poco más oscuro */
+}
+
+.carnet img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%; /* Borde redondeado para la foto */
+    max-width: 200px; /* Tamaño máximo para la foto */
+    max-height: 200px;
+    margin-top: 20px; /* Espacio entre los datos y la foto */
+}

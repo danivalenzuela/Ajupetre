@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar Precios de Abono por Mes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="container">
+    <h1 class="mt-4">Actualizar Precios de Abono por Mes</h1>
+    
+    <form action="actualizar_precios.php" method="POST" class="mt-3">
+        <div class="form-group">
+            <label for="enero">Enero:</label>
+            <input type="number" name="enero" id="enero" min="0" step="0.01" required class="form-control">
+        </div>
+        <input type="submit" value="Actualizar Precios" class="btn btn-primary">
+    </form>
+
+    <form action="actualizar_precios.php" method="POST" class="mt-3">
+        <div class="form-group">
+            <label for="febrero">Febrero:</label>
+            <input type="number" name="febrero" id="febrero" min="0" step="0.01" required class="form-control">
+        </div>
+        <input type="submit" value="Actualizar Precios" class="btn btn-primary">
+    </form>
+    
+    <form action="actualizar_precios.php" method="POST" class="mt-3">
+        <div class="form-group">
+            <label for="marzo">Marzo:</label>
+            <input type="number" name="marzo" id="marzo" min="0" step="0.01" required class="form-control">
+        </div>
+        <input type="submit" value="Actualizar Precios" class="btn btn-primary">
+    </form>
+
+    <a href="http://localhost/sist/index.html" target="_self" class="btn btn-secondary mt-3">
+        Volver a pantalla principal
+    </a>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
