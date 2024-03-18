@@ -12,7 +12,8 @@ Sistema de registro de afiliados de Centro de Jubilados/Pensionados.
   
     -Una vez creado el usuario se le asocian abono mensual x 12 meses ):
       -- procesamiento cobros mediante Checkbox mes a mes, para hacer mas simple la forma de cobro .
-    <img width="303" alt="image" src="https://github.com/danivalenzuela/Ajupetre/assets/139027124/bc574887-7cfd-48b7-8677-b0fc5a7836fb">
+   <img width="315" alt="image" src="https://github.com/danivalenzuela/Ajupetre/assets/139027124/9f3f4439-d392-43c9-b650-b077c3e4fa61">
+
 
   
   -  Impresion de comprobante de pago luego de haber cobrado mensualidades a Afiliado.
